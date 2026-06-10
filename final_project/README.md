@@ -135,8 +135,7 @@ Ambos conjuntos están codificados con etiquetas discretas (`0`, `1`, `2`) y no 
 
 # Conclusiones principales 
 * FinBERT sigue siendo una referencia fuerte para análisis de sentimiento financiero.
-
-La arquitectura híbrida superó a CNN+LSTM con un F1-Score de 0.6967, demostrando ser más eficiente para señales de una sola derivación.
+Este punto nos demostró que un modelo preentrenado corretamente, sigue produciendo mejores resultados que un modelo base. Pero como vimos con los resultados de Gemma 12B, un modelo con una myor número de parámetros logra clasificar de mejor manera las pruebas de análisis de sentimientos en finanzas.
 
 * Eficiencia Computacional
 
@@ -145,8 +144,7 @@ Se logró una reducción drástica en el preprocesamiento manual y tiempos de en
 * Líneas de Investigación Futura
 
 Optimización de hiperparámetros y aumento de datos.
-Implementación en dispositivos wearables para monitoreo remoto.
-Evaluación con datos no normalizados para robustez clínica.
+Evaluación con modelos de lenguaje con inclinación financiera, o realizar un proceso de *fine-tuning* a un modelo que funciona correctamente, para lograr obtener mejores resultados.
 
 
 
@@ -158,6 +156,18 @@ Evaluación con datos no normalizados para robustez clínica.
 * **[PyTorch](https://pytorch.org/)** — Backend para la ejecución y ajuste de los modelos en CPU/GPU.
 * **[Groq API](https://groq.com/)** — Inferencia veloz en la nube para experimentar con el modelo Llama 3.1 8B de grandes proporciones.
 * **[Matplotlib](https://matplotlib.org/) / [Seaborn](https://seaborn.pydata.org/)** — Para la visualización de resultados e histogramas.
+
+---
+
+## Conclusiones
+
+[1] Peng, B., Chersoni, E., Hsu, Y.-Y., & Huang, C.-R. (2021). Is Domain Adaptation Worth Your Investment? Comparing BERT and FinBERT on Financial Tasks. Actas y repositorios de investigación en Procesamiento de Lenguaje Natural Financiero.
+[2] Malo, P., Sinha, A., Korhonen, P., Wallenius, J., & Takala, P. (2014). Good debt or bad debt: Detecting semantic orientations in economic texts. Journal of the Association for Information Science and Technology, 65(4), 782-796. (Fuente original del dataset Financial PhraseBank).
+[3] Cortis, K., Davis, B., McDermott, J., Handschuh, S., & Manandhar, S. (2017). SemEval-2017 Task 5: Fine-Grained Sentiment Analysis on Financial Microblogs and News. Proceedings of the 11th International Workshop on Semantic Evaluation (SemEval-2017). (Fuente base para FinTextSen).
+[4] Touvron, H., et al. (2023). Llama: Open and Efficient Foundation Language Models. Meta AI Research.
+[5] Gemma Team, Google DeepMind. (2024). Gemma: Open Models Based on Gemini Research and Technology.
+[6] Hugging Face. (2025). Transformers Documentation. Recuperado de la plataforma oficial de Hugging Face.
+[7] Documentación técnica interna del proyecto (Datos.md y README.md). Repositorio: Análisis de Sentimiento Financiero.
 
 ---
 

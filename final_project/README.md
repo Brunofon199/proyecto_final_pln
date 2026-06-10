@@ -146,7 +146,7 @@ Ambos conjuntos están codificados con etiquetas discretas (`0`, `1`, `2`) y no 
 
 ---
 
-##Comparativa de Modelos — FinBert vs Llama
+## Comparativa de Modelos — FinBert vs Llama
 
 | *Métrica de evaluación* | *FinBert* | *Llama 3.2‑1B‑Instruct* | *Llama 3.1‑8B‑Instant* |
 |----------------------------|--------------|-----------------------------|---------------------------|

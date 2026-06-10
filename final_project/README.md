@@ -113,9 +113,11 @@ Ambos conjuntos están codificados con etiquetas discretas (`0`, `1`, `2`) y no 
 
 ---
 
-# Comparación de métricas entre el baseline del decano y nuestra propuesta
+# Comparación de métricas entre el baseline del artículo y nuestra propuesta
 
-## Tabla 1: FinBERT vs BERT
+## Usando FinancialPhraseBank
+
+## Tabla 1: FinBERT vs BERT 
 
 | Métrica de Evaluación | Artículo FinBert Base | Réplica de resultados FinBert Base | Bert Artículo | Réplica de resultados BERT |
 |------------------------|-----------------------|-----------------------------------|---------------|----------------------------|
@@ -132,6 +134,27 @@ Ambos conjuntos están codificados con etiquetas discretas (`0`, `1`, `2`) y no 
 | Macro F1 - ZS         | 56.30     | 38.78                 | 93.82          |
 | Micro F1 - FS         | 53.66     | 39.91                 | 98.02          |
 | Macro F1 - FS         | 44.92     | 36.27                 | 98.01          |
+
+## Usando FinTextSen
+
+## Métrica de Evaluación — FinBert Base
+
+| *Métrica de Evaluación* | *Artículo FinBert Base* | *Réplica de resultados FinBert Base* |
+|----------------------------|----------------------------|----------------------------------------|
+| Micro F1 | 0.8308 | 0.2560 |
+| Macro F1 | 0.5734 | 0.2723 |
+
+---
+
+##Comparativa de Modelos — FinBert vs Llama
+
+| *Métrica de evaluación* | *FinBert* | *Llama 3.2‑1B‑Instruct* | *Llama 3.1‑8B‑Instant* |
+|----------------------------|--------------|-----------------------------|---------------------------|
+| Micro F1 ‑ ZS | 0.2560 | 0.3126 | 0.5844 |
+| Macro F1 ‑ ZS | 0.2723 | 0.2767 | 0.4938 |
+| Micro F1 ‑ FS | 0.6720 | — | 0.6816 |
+| Macro F1 ‑ FS | 0.3447 | — | 0.5397 |
+
 
 # Conclusiones principales 
 * FinBERT sigue siendo una referencia fuerte para análisis de sentimiento financiero.

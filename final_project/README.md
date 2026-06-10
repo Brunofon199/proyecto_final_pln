@@ -17,6 +17,13 @@
 
 ---
 
+# Análisis de sentimientos de textos financieros en la era de LLM
+
+## Artículo de referencia 
+
+Peng, B., Chersoni, E., Hsu, Y.-Y., & Huang, C.-R. (2021). Is Domain Adaptation Worth Your Investment? Comparing BERT and FinBERT on Financial Tasks. Actas y repositorios de investigación en Procesamiento de Lenguaje Natural Financiero.
+
+
 ## Objetivo
 
 Responder a la pregunta: **¿Sigue siendo rentable hacer adaptación de dominio cuando existen modelos instruccionales capaces de resolver la tarea mediante prompting zero-shot o few-shot?**

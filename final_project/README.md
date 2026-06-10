@@ -98,6 +98,11 @@ final_project/
 └── README.md                         # Este documento
 ```
 
+--- 
+
+## Instrucciones para ejecutar el código 
+El presente trabajo fue realizado a base de notebooks, ls cuales pueden ser ejecutados de forma individual. **Unicamente** en los realizados con la API de Groq, se recomienda utilizar una API personal para este ámbito. A continuación se muestra el desarrollo de las demás secciones de este proyecto final.
+
 ---
 
 ## Base de datos
@@ -107,6 +112,43 @@ Las bases de datos usadas no requieren gestores de bases de datos relacionales n
 Ambos conjuntos están codificados con etiquetas discretas (`0`, `1`, `2`) y no presentan dependencias externas para su consulta. Todo su procesamiento (limpieza de NA, balanceo, eliminación de textos extremadamente vacíos) se realiza in-memory en cada cuaderno de experimentación mediante Pandas.
 
 ---
+
+# Comparación de métricas entre el baseline del decano y nuestra propuesta
+
+## Tabla 1: FinBERT vs BERT
+
+| Métrica de Evaluación | Artículo FinBert Base | Réplica de resultados FinBert Base | Bert Artículo | Réplica de resultados BERT |
+|------------------------|-----------------------|-----------------------------------|---------------|----------------------------|
+| Micro F1              | 96.86                 | 97.17                             | 96.60         | 63.03                      |
+| Macro F1              | 95.61                 | 96.25                             | 95.15         | 56.30                      |
+
+---
+
+## Tabla 2: Comparación entre Bert, Llama y Gemma
+
+| Métrica de Evaluación | Bert Base | Llama 3.2-1B-Instruct | Gemma-4-12B-It |
+|------------------------|-----------|-----------------------|----------------|
+| Micro F1 - ZS         | 63.03     | 57.12                 | 93.83          |
+| Macro F1 - ZS         | 56.30     | 38.78                 | 93.82          |
+| Micro F1 - FS         | 53.66     | 39.91                 | 98.02          |
+| Macro F1 - FS         | 44.92     | 36.27                 | 98.01          |
+
+# Conclusiones principales 
+* FinBERT sigue siendo una referencia fuerte para análisis de sentimiento financiero.
+
+La arquitectura híbrida superó a CNN+LSTM con un F1-Score de 0.6967, demostrando ser más eficiente para señales de una sola derivación.
+
+* Eficiencia Computacional
+
+Se logró una reducción drástica en el preprocesamiento manual y tiempos de entrenamiento gracias a la extracción automática de características.
+
+* Líneas de Investigación Futura
+
+Optimización de hiperparámetros y aumento de datos.
+Implementación en dispositivos wearables para monitoreo remoto.
+Evaluación con datos no normalizados para robustez clínica.
+
+
 
 ## Librerías necesarias
 

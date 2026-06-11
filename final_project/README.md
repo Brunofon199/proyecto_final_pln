@@ -19,6 +19,8 @@
 
 # Análisis de sentimientos de textos financieros en la era de LLM
 
+[Link a carpeta con pressentación y reporte con documentación](https://drive.google.com/drive/folders/1dsYJDKv4PuTiTtTzTeJttwnA0eUhIUkr?usp=sharing)
+
 ## Artículo de referencia 
 
 Peng, B., Chersoni, E., Hsu, Y.-Y., & Huang, C.-R. (2021). Is Domain Adaptation Worth Your Investment? Comparing BERT and FinBERT on Financial Tasks. Actas y repositorios de investigación en Procesamiento de Lenguaje Natural Financiero.

@@ -119,16 +119,19 @@ F1-Score, Inferencia)
 ```text
 final_project/
 ├── data/
+│   ├── analisis_datasets.ipynb       # EDA de conjunto de datos
 │   ├── Datos.md                      # Documentación completa de los datasets
 │   ├── FinTextSen.csv                # Datos crudos de microblogs
 │   └── Sentences_AllAgree.csv        # Datos formales de PhraseBank
 ├── src/
-│   ├── experimentos_groq_llama31_8b.ipynb       # Pruebas con Llama 3.1 8B (usando API de Groq)
-│   ├── Proyecto_FInal_bert.ipynb                # Inferencia y evaluación tradicional con BERT
-│   ├── ProyectoFinal_finbert.ipynb              # Inferencia y evaluación dominial con FinBERT
-│   ├── ProyectoFinal_llama32_1b_instruc.ipynb   # Evaluación con Llama 3.2 1B instructivo
-│   ├── ProyectoFinalPLN_Gemma_fewshot.ipynb     # Estrategias Few-Shot mediante Gemma
-│   └── ProyectoFinalPLN_Gemma_zeroshot.ipynb    # Inferencia Zero-Shot mediante Gemma
+│   ├── experimentos_groq_llama31_8b.ipynb                # Pruebas con Llama 3.1 8B FinTextSen (usando API de Groq)
+│   ├── inferencia_finbert_FinTextSen(1).ipynb            # Pruebas con FinBERT en FintextSen 
+│   ├── inferencia_llama32_1b_instruc_FinTextSen(1).ipynb # Pruebas con Llama 3.2 1B en FinTextSen (usando API de Groq)
+│   ├── Proyecto_FInal_bert.ipynb                         # Inferencia y evaluación tradicional con BERT FinancialPhraseBank
+│   ├── ProyectoFinal_finbert.ipynb                       # Inferencia y evaluación dominial con FinBERT FinancialPhraseBank
+│   ├── ProyectoFinal_llama32_1b_instruc.ipynb            # Evaluación con Llama 3.2 1B instructivo FinancialPhraseBank
+│   ├── ProyectoFinalPLN_Gemma_fewshot.ipynb              # Estrategias Few-Shot mediante Gemma FinancialPhraseBank
+│   └── ProyectoFinalPLN_Gemma_zeroshot.ipynb             # Inferencia Zero-Shot mediante Gemma FinancialPhraseBank
 └── README.md                         # Este documento
 ```
 

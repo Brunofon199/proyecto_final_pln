@@ -240,10 +240,10 @@ Ambos conjuntos están codificados con etiquetas discretas (`0`, `1`, `2`) y no 
 
 ---
 
-## Equipo
+## Integrantse del Equipo
 
 * **Fonseca González Bruno**
-* **Pichardo Ahuatzi Mariano Josué**
+* **Ahuatzi Pichardo Mariano Josué**
 
 <div align="center">
 

@@ -23,6 +23,33 @@
 
 Peng, B., Chersoni, E., Hsu, Y.-Y., & Huang, C.-R. (2021). Is Domain Adaptation Worth Your Investment? Comparing BERT and FinBERT on Financial Tasks. Actas y repositorios de investigación en Procesamiento de Lenguaje Natural Financiero.
 
+## Descripción del problema 
+
+El artículo aborda el problema de determinar si realmente vale la pena la inversión de recursos y tiempo necesaria para realizar una adaptación de dominio en modelos de lenguaje avanzados. Específicamente, los autores investigan la efectividad de dos estrategias de entrenamiento para el procesamiento de textos financieros: por un lado, continuar el preentrenamiento a partir de un modelo general como BERT Base manteniendo su vocabulario general; y por el otro, entrenar un modelo completamente desde cero utilizando corpora especializados y un vocabulario adaptado al dominio. Al evaluar estas estrategias en una variedad de tareas complejas (más allá del análisis de sentimiento tradicional), el estudio busca resolver la falta de consenso sobre si un vocabulario altamente especializado es crucial en el ámbito financiero, contrastando los resultados con lo observado en otros sectores como el biomédico donde el entrenamiento desde cero sí ha demostrado ser más beneficioso.
+
+## Resumen de Metodología 
+
+La metodología del proyecto se estructuró en cuatro fases secuenciales diseñadas para evaluar el impacto de la adaptación de dominio en el procesamiento de lenguaje natural financiero. 
+1. Recopilación de Datos, donde se reunieron diversos conjuntos de datos especializados, incluyendo Financial Phrase Bank, FinTextSen, StockSen y las subtareas de FinNum-1.
+2. Preprocesamiento y Configuración de Modelos, se prepararon los textos mediante la limpieza de ruido (como etiquetas HTML, URLs y menciones de usuarios) y la tokenización adecuada para los modelos seleccionados, que incluyeron arquitecturas BERT base y variantes de FinBERT.
+3. Entrenamiento y Ajuste Fino, se implementaron dos enfoques principales de manera controlada utilizando la biblioteca Hugging Face: por un lado, un preentrenamiento continuo a partir de los pesos de BERT preservando el vocabulario general, y por el otro, el entrenamiento de un modelo especializado desde cero empleando corpora financieros y un vocabulario adaptado al dominio.
+4. Evaluación y Análisis, se midió el rendimiento de los modelos con las métricas **F1-micro** y la **F1-macro**.
+
+## Objetivo de la reproducción 
+
+El objetivo primordial de la fase de reproducción es validar la consistencia y transferibilidad de los hallazgos del artículo original ("Is Domain Adaptation Worth Your Investment? Comparing BERT and FinBERT on Financial Tasks"). Esto se realiza mediante la réplica parcial de sus experimentos bajo un entorno controlado , utilizando los modelos basados en codificadores enmascarados como BERT Base y su contraparte especializada FinBERT.  
+
+De manera específica, esta etapa busca cumplir con los siguientes propósitos técnico-metodológicos:
+
+* Establecer una Línea Base (Baseline): Obtener métricas de rendimiento de referencia (*Micro F1y Macro F1*) sobre los mismos conjuntos de datos (Financial PhraseBank y FinTextSen). Esto permite cuantificar con precisión el impacto real de la adaptación de dominio en tareas de análisis de sentimiento financiero bajo el paradigma tradicional de ajuste fino (fine-tuning).  
+
+* Evaluar la Robustez ante la Variabilidad del Corpus: Analizar cómo se comportan dichos modelos preentrenados al enfrentarse a dos estructuras lingüísticas radicalmente opuestas: el lenguaje formal y estructurado de las noticias financieras, frente a la volatilidad, ruido y restricciones de longitud propios de los microblogs en redes sociales (Twitter y StockTwits).  
+
+* Habilitar un Marco Comparativo Justo: Proveer el punto de contraste estadístico necesario para evaluar la hipótesis de nuestra propuesta de extensión. Con ello, se puede determinar si las estrategias emergentes de ingeniería de prompts (Zero-Shot y Few-Shot) en LLMs actuales logran ser competitivas, más flexibles o financieramente más rentables que el costo computacional implícito en la adaptación de dominio e infraestructura de los modelos tradicionales.
+
+## Descripción de la propuesta de mejora
+
+Nuestra propuesta de mejora consiste en extender la investigación original mediante la evaluación de estrategias de prompting Zero-Shot (sin ejemplos) y Few-Shot (con ejemplos de referencia) en Grandes Modelos de Lenguaje (LLMs) de última generación. Para actualizar la pregunta del artículo y determinar si en la era actual sigue siendo rentable invertir en adaptaciones de dominio costosas, implementamos este enfoque utilizando un prompt especializado que define un rol de analista financiero experto sobre arquitecturas actuales como BERT Base, FinBERT, Llama-3.2-1B-Instruct, Llama-3.1-8B-Instant y Gemma-4-12B-It. Con esto, buscamos proponer nuevas métricas en el área y analizar si el uso de instrucciones y el aprendizaje en contexto de los LLMs pueden competir de manera flexible y con un menor costo de implementación frente al paradigma tradicional de ajuste fino en modelos especializados.
 
 ## Objetivo
 
@@ -108,7 +135,20 @@ final_project/
 --- 
 
 ## Instrucciones para ejecutar el código 
-El presente trabajo fue realizado a base de notebooks, ls cuales pueden ser ejecutados de forma individual. **Unicamente** en los realizados con la API de Groq, se recomienda utilizar una API personal para este ámbito. A continuación se muestra el desarrollo de las demás secciones de este proyecto final.
+
+Para facilitar la reproducibilidad de los experimentos sin necesidad de configuraciones locales complejas de hardware o dependencias, todo el flujo de trabajo ha sido desarrollado e implementado mediante Jupyter Notebooks optimizados para `Google Colab`. Cada cuaderno se encuentra completamente documentado y estructurado de forma secuencial.
+
+### Requisitos Previos y Configuración
+1. Acceso a Google Colab: Asegúrese de contar con una cuenta activa de Google Drive para poder ejecutar los entornos de nube.
+2. Carga de Datos: Antes de iniciar la ejecución de los cuadernos de la sección `src/`, es necesario cargar los archivos de la carpeta `data/ (FinTextSen.csv y Sentences_AllAgree.csv)` en el entorno de almacenamiento de Colab o en su defecto, configurar la ruta correspondiente si decide vincular su cuenta de Google Drive.
+3. Claves de API (Si aplica): Para los cuadernos que consumen modelos externos (`experimentos_groq_llama31_8b.ipynb` y `ProyectoFinal_llama32_1b_instruc.ipynb`), asegúrese de contar con sus respectivas credenciales de Groq o acceso a Hugging Face Studio configuradas como variables de entorno (Secrets) en Colab.
+
+### Flujo de Ejecución
+
+La ejecución de los experimentos se realiza de forma directa siguiendo estos pasos dentro de cada archivo `.ipynb`:
+1. Activación del Entorno de Hardware: Se recomienda activar un entorno de ejecución con aceleración por hardware (T4 GPU o superior) en el menú Entorno de ejecución > Cambiar tipo de entorno de ejecución, especialmente para las tareas de inferencia de los modelos base y LLMs locales.
+2. Instalación de Dependencias iniciales: Ejecute la primera celda de cada cuaderno para instalar automáticamente las bibliotecas necesarias (tales como transformers, groq, scikit-learn, entre otras).
+3. Ejecución Secuencial: Complete el experimento ejecutando de manera ordenada las celdas de código (Entorno de ejecución > Correr todas). Cada sección generará de forma automática las salidas correspondientes, incluyendo el cálculo de métricas (F1-Score) y la visualización de matrices de confusión.
 
 ---
 
@@ -164,17 +204,11 @@ Ambos conjuntos están codificados con etiquetas discretas (`0`, `1`, `2`) y no 
 
 
 # Conclusiones principales 
-* FinBERT sigue siendo una referencia fuerte para análisis de sentimiento financiero.
-Este punto nos demostró que un modelo preentrenado corretamente, sigue produciendo mejores resultados que un modelo base. Pero como vimos con los resultados de Gemma 12B, un modelo con una myor número de parámetros logra clasificar de mejor manera las pruebas de análisis de sentimientos en finanzas.
+* Vigencia y Robustez de Modelos Especializados: FinBERT continúa consolidándose como una referencia sumamente sólida para el análisis de sentimiento en el sector financiero. Los altos niveles de rendimiento alcanzados demuestre la enorme utilidad que poseen los modelos con adaptación de dominio cuando existe una alineación directa entre la naturaleza de los datos de entrenamiento y el entorno de evaluación. No obstante, se observa que este desempeño sobresaliente no se transfiere de manera completamente uniforme ante cualquier cambio de contexto.  
 
-* Eficiencia Computacional
+* Pertinencia de la Ingeniería de Prompts frente a la Adaptación Tradicional: La inclusión de estrategias Zero-Shot y Few-Shot en la metodología actualiza de forma pertinente la pregunta central planteada por el artículo original. En la era actual de los Grandes Modelos de Lenguaje (LLMs), el uso de instrucciones estratégicas demostró ser una alternativa competitiva. Especialmente en escenarios Few-Shot, el aprendizaje en contexto exhibe un gran potencial para equipararse a la adaptación de dominio tradicional sin incurrir en sus altos costos asociados, si bien todavía evidencia áreas de oportunidad al procesar clases minoritarias o subrepresentadas.  
 
-Se logró una reducción drástica en el preprocesamiento manual y tiempos de entrenamiento gracias a la extracción automática de características.
-
-* Líneas de Investigación Futura
-
-Optimización de hiperparámetros y aumento de datos.
-Evaluación con modelos de lenguaje con inclinación financiera, o realizar un proceso de *fine-tuning* a un modelo que funciona correctamente, para lograr obtener mejores resultados.
+* Criterio de Selección según el Entorno Operativo: Ambas aproximaciones tecnológicas poseen un valor estratégico supeditado al escenario de aplicación. Mientras que la adaptación de dominio por ajuste fino (fine-tuning) sigue siendo la opción predilecta cuando se requiere una robustez extrema ante tareas críticas y específicas, los LLMs asistidos por ingeniería de prompts representan una alternativa sumamente flexible, ágil y de rápida implementación. La decisión final entre un enfoque u otro debe fundamentarse balanceando minuciosamente el tipo de texto a procesar, la disponibilidad de infraestructura, el equilibrio en la distribución de las clases del corpus y las restricciones presupuestarias del proyecto.
 
 
 

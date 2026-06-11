@@ -19,7 +19,7 @@
 
 # Análisis de sentimientos de textos financieros en la era de LLM
 
-[Link a carpeta con pressentación y reporte con documentación](https://drive.google.com/drive/folders/1dsYJDKv4PuTiTtTzTeJttwnA0eUhIUkr?usp=sharing)
+[Link a carpeta con presentación y reporte con documentación](https://drive.google.com/drive/folders/1dsYJDKv4PuTiTtTzTeJttwnA0eUhIUkr?usp=sharing)
 
 ## Artículo de referencia 
 

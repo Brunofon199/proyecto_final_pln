@@ -78,7 +78,7 @@ flowchart TD
     K[Métricas de Evaluación] --> L[Micro F1-Score]
     K --> M[Macro F1-Score]
     K --> N[Matrices de Confusión]
-
+```
 
 ---
 
